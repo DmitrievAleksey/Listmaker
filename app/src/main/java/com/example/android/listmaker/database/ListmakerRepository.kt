@@ -1,6 +1,7 @@
 package com.example.android.listmaker.database
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import java.lang.IllegalStateException
 import java.util.*
@@ -17,11 +18,11 @@ class ListmakerRepository private constructor(context: Context) {
 
     private val listmakerDao = database.listmakerDao()
 
-    fun getFootballClubs(): List<FootballClub> = listmakerDao.getFootballClubs()
+    fun getFootballClubs(): LiveData<List<FootballClub>> = listmakerDao.getFootballClubs()
 
-    fun getPlayersOfClub(): List<PlayerOfClub> = listmakerDao.getPlayersOfClub()
+    fun getPlayersOfClub(): LiveData<List<PlayerOfClub>> = listmakerDao.getPlayersOfClub()
 
-    fun getPlayer(id: UUID): Player? = listmakerDao.getPlayer(id)
+    fun getPlayer(id: UUID): LiveData<Player?> = listmakerDao.getPlayer(id)
 
     companion object {
         private var INSTANCE: ListmakerRepository? = null

@@ -1,5 +1,6 @@
 package com.example.android.listmaker.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
@@ -9,12 +10,12 @@ import java.util.*
 interface ListmakerDao {
 
     @Query("SELECT * FROM FootballClub")
-    fun getFootballClubs(): List<FootballClub>
+    fun getFootballClubs(): LiveData<List<FootballClub>>
 
     @Transaction
     @Query("SELECT * FROM FootballClub")
-    fun getPlayersOfClub(): List<PlayerOfClub>
+    fun getPlayersOfClub(): LiveData<List<PlayerOfClub>>
 
     @Query("SELECT * FROM Player WHERE playerId=(:id)")
-    fun getPlayer(id: UUID): Player?
+    fun getPlayer(id: UUID): LiveData<Player?>
 }
