@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Room
 import java.lang.IllegalStateException
 import java.util.*
+import java.util.concurrent.Executors
 
 private const val DATABASE_NAME = "listmaker-database"
 
@@ -17,12 +18,19 @@ class ListmakerRepository private constructor(context: Context) {
     ).build()
 
     private val listmakerDao = database.listmakerDao()
+    private val executor = Executors.newSingleThreadExecutor()
 
     fun getFootballClubs(): LiveData<List<FootballClub>> = listmakerDao.getFootballClubs()
 
     fun getPlayersOfClub(): LiveData<List<PlayerOfClub>> = listmakerDao.getPlayersOfClub()
 
     fun getPlayer(id: UUID): LiveData<Player?> = listmakerDao.getPlayer(id)
+
+    fun addFootballClub(footballClub: FootballClub) {
+        executor.execute {
+            listmakerDao.addFootballClub(footballClub)
+        }
+    }
 
     companion object {
         private var INSTANCE: ListmakerRepository? = null

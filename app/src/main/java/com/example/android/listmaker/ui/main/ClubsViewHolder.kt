@@ -4,5 +4,4 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.listmaker.databinding.ClubViewHolderBinding
 
 class ClubViewHolder(val binding: ClubViewHolderBinding):
-    RecyclerView.ViewHolder(binding.root) {
-}
+    RecyclerView.ViewHolder(binding.root)
