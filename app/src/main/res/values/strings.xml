@@ -2,4 +2,8 @@
     <string name="app_name">Listmaker</string>
     <string name="name_of_club">Введите наименование команды</string>
     <string name="create_list">Создать</string>
+    <string name="add_club">Добавить</string>
+    <string name="name_of">Введите наименование</string>
+    <string name="nullDetailListClub">Выберите команду для отображения списка игроков</string>
+    <string name="nullDetailListPlayer">В выбранной команде нет игроков</string>
 </resources>

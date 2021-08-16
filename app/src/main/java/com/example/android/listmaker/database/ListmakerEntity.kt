@@ -16,16 +16,16 @@ data class FootballClub(
 @Entity
 data class Player(
     @PrimaryKey val playerId: UUID = UUID.randomUUID(),
-    var playerOfClub: UUID,
-    val playerName: String,
+    var clubId: UUID? = null,
+    var playerName: String = "",
     var playerPhoto: String = ""
 )
 
-data class PlayerOfClub(
+data class PlayersOfClub(
     @Embedded val footballClub: FootballClub,
     @Relation(
         parentColumn = "footballClubId",
-        entityColumn = "playerOfClub"
+        entityColumn = "clubId"
     )
     val players: List<Player>
 )

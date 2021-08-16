@@ -8,13 +8,24 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
+        android:id="@+id/main_fragment_container"
         android:name="com.example.android.listmaker.ui.main.MainFragment"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout="@layout/main_fragment" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/detail_list_fragment_container"
+        android:name="com.example.android.listmaker.ui.detail.DetailListFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/main_fragment" />
+        app:layout_constraintStart_toEndOf="@+id/main_fragment_container"
+        app:layout_constraintTop_toTopOf="@+id/main_fragment_container"
+        tools:layout="@layout/detail_list_fragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

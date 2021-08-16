@@ -13,13 +13,19 @@ interface ListmakerDao {
     @Query("SELECT * FROM FootballClub")
     fun getFootballClubs(): LiveData<List<FootballClub>>
 
+    @Query("SELECT * FROM FootballClub WHERE footballClubId=(:id)")
+    fun getClub(id: UUID): LiveData<FootballClub?>
+
     @Transaction
-    @Query("SELECT * FROM FootballClub")
-    fun getPlayersOfClub(): LiveData<List<PlayerOfClub>>
+    @Query("SELECT * FROM FootballClub WHERE footballClubId=(:id)")
+    fun getPlayersOfClub(id: UUID): LiveData<PlayersOfClub?>
 
     @Query("SELECT * FROM Player WHERE playerId=(:id)")
     fun getPlayer(id: UUID): LiveData<Player?>
 
     @Insert
     fun addFootballClub(footballClub: FootballClub)
+
+    @Insert
+    fun addPlayer(player: Player)
 }
