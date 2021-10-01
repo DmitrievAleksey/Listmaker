@@ -22,9 +22,11 @@ class ListmakerRepository private constructor(context: Context) {
 
     fun getFootballClubs(): LiveData<List<FootballClub>> = listmakerDao.getFootballClubs()
 
-    fun getClub(id: UUID): LiveData<FootballClub?> = listmakerDao.getClub(id)
+    fun getClub(id: UUID?): LiveData<FootballClub?>? = id?.let { listmakerDao.getClub(it) }
 
-    fun getPlayersOfClub(id: UUID): LiveData<PlayersOfClub?> = listmakerDao.getPlayersOfClub(id)
+    fun getPlayersOfClub(id: UUID?): LiveData<PlayersOfClub?>? = id?.let {
+        listmakerDao.getPlayersOfClub(it)
+    }
 
     fun getPlayer(id: UUID): LiveData<Player?> = listmakerDao.getPlayer(id)
 
@@ -37,6 +39,12 @@ class ListmakerRepository private constructor(context: Context) {
     fun addPlayer(player: Player) {
         executor.execute {
             listmakerDao.addPlayer(player)
+        }
+    }
+
+    fun updateFootballClub(footballClub: FootballClub) {
+        executor.execute {
+            listmakerDao.updateFootballClub(footballClub)
         }
     }
 

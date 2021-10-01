@@ -10,7 +10,7 @@ import java.util.*
 data class FootballClub(
     @PrimaryKey val footballClubId: UUID = UUID.randomUUID(),
     var footballClubName: String = "",
-    val footballClubLogo: String = ""
+    var footballClubLogo: String = ""
 )
 
 @Entity

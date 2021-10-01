@@ -6,4 +6,5 @@
     <string name="name_of">Введите наименование</string>
     <string name="nullDetailListClub">Выберите команду для отображения списка игроков</string>
     <string name="nullDetailListPlayer">В выбранной команде нет игроков</string>
+    <string name="nameClubTextView">Наименование команды</string>
 </resources>

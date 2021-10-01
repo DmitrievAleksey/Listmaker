@@ -1,10 +1,7 @@
 package com.example.android.listmaker.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import java.util.*
 
 @Dao
@@ -28,4 +25,7 @@ interface ListmakerDao {
 
     @Insert
     fun addPlayer(player: Player)
+
+    @Update
+    fun updateFootballClub(footballClub: FootballClub)
 }
